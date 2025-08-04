@@ -1,7 +1,7 @@
 import TaskCard from "../components/TaskCard";
 import TodoModal from "../components/Modal";
 import { type TaskCardProps } from "../libs/Todolist";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [d, setDone] = useState(0);
