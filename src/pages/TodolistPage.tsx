@@ -1,9 +1,10 @@
 import TaskCard from "../components/TaskCard";
 import TodoModal from "../components/Modal";
 import { type TaskCardProps } from "../libs/Todolist";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [done, setDone] = useState(0);
   const [tasks, setTasks] = useState<TaskCardProps[]>([
     {
       id: "1",
@@ -40,7 +41,7 @@ function App() {
   // Define the function with proper type
   const toggleDoneTask = (taskId: string) => {
     const newTasks = tasks.map((todo: TaskCardProps) =>
-      todo.id === taskId ? { ...todo, isDone: !todo.isDone } : todo
+      todo.id === taskId ? (setDone(done + (todo.isDone? -1:1)), { ...todo, isDone: !todo.isDone }) : todo 
     );
     setTasks(newTasks);
   };
@@ -49,7 +50,7 @@ function App() {
     <div className="col-12 m-2 p-0">
       <div className="container text-center">
         <h2>Todo List</h2>
-        <span className="m-2">All : () Done : ()</span>
+        <span className="m-2">All : ({done}) Done : ({tasks.length})</span>
         {/* Modal Component */}
         <button
           type="button"
@@ -59,7 +60,6 @@ function App() {
         >
           Add
         </button>
-
         <TodoModal onAdd={handleAdd} />
         <>
           {tasks.map((task) => (

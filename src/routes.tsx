@@ -24,6 +24,8 @@ export const router = createBrowserRouter([
       { path: "hellomynamepage", element: <HelloMyNamePage /> },
       // localhost:xxxx/my/todolistpage
       { path: "todolistpage", element: <TodolistPage /> },
+      { path: "errorPage", element: <ErrorPage/> },
+      { path: "CounterPage", element: <CounterPage/>}
     ],
   },
 ]);
