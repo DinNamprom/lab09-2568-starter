@@ -35,6 +35,7 @@ function App() {
   // Define the function with proper type
   const deleteTask = (taskId: string) => {
     const newTasks = tasks.filter((task: TaskCardProps) => task.id !== taskId);
+    if (d > 0) setDone(d-1);
     setTasks(newTasks);
   };
 
